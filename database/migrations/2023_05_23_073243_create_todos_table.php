@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
+            $table->string('pengarang');
+            $table->string('penerbit');
             $table->string('deskripsi');
             $table->string('foto')->nullable();
             $table->timestamps();

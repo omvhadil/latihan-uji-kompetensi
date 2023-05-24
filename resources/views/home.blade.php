@@ -31,27 +31,26 @@
                                 <th scope="row">1</th>
                                 <td>
                                     <img src="{{ asset('images/1684828849.png') }}" style="width: 50px">
-                </div>
-                </td>
-                <td>Bumi Cinta</td>
-                <td>Jason</td>
-                <td>Pustaka</td>
-                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit obcaecati quod asperiores,
-                    et, ipsum accusamus vero totam debitis repellendus omnis!</td>
-                <td class="d-inline-flex gap-1">
-                    <button class="btn bg-success bg-opacity-50">✍</button>
-                    <button class="btn bg-danger bg-opacity-50">🗑</button>
-                </td>
-                </tr>
+                                </td>
+                                <td>Bumi Cinta</td>
+                                <td>Jason</td>
+                                <td>Pustaka</td>
+                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit obcaecati quod asperiores,
+                                    et, ipsum accusamus vero totam debitis repellendus omnis!</td>
+                                <td class="d-inline-flex gap-1">
+                                    <button class="btn bg-success bg-opacity-50">✍</button>
+                                    <button class="btn bg-danger bg-opacity-50">🗑</button>
+                                </td>
+                            </tr>
 
-                </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h6>@fadilku</h6>
             </div>
         </div>
-        <div class="card-footer">
-            <h6>@fadilku</h6>
-        </div>
-    </div>
     </div>
     {{-- <div class="container">
         <header class="mb-5">
