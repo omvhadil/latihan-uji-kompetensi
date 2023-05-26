@@ -5,7 +5,7 @@
             <div class="card-header bg-transparent border-0">
                 <h4 class="fw-bold text-center">Tambah Data</h4>
             </div>
-            <form action="/" method="post" enctype="multipart/form-data">
+            <form action="/tambah" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Judul Buku</label>

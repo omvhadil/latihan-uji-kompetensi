@@ -27,21 +27,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>
-                                    <img src="{{ asset('images/1684828849.png') }}" style="width: 50px">
-                                </td>
-                                <td>Bumi Cinta</td>
-                                <td>Jason</td>
-                                <td>Pustaka</td>
-                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit obcaecati quod asperiores,
-                                    et, ipsum accusamus vero totam debitis repellendus omnis!</td>
-                                <td class="d-inline-flex gap-1">
-                                    <button class="btn bg-success bg-opacity-50">✍</button>
-                                    <button class="btn bg-danger bg-opacity-50">🗑</button>
-                                </td>
-                            </tr>
+                            @foreach ($todos as $key => $todo)
+                                <tr>
+                                    <th scope="row">{{ $key + 1 }}</th>
+                                    <td>
+                                        @if ($todo->foto)
+                                            <img src="{{ asset('images/' . $todo->foto) }}" style="width: 50px">
+                                        @else
+                                            tidak ada foto
+                                        @endif
+                                    </td>
+                                    <td>{{ $todo->judul }}</td>
+                                    <td>{{ $todo->pengarang }}</td>
+                                    <td>{{ $todo->penerbit }}</td>
+                                    <td>{{ $todo->deskripsi }}</td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <a href="/edit/{{ $todo->id }}">
+                                                <button class="btn bg-success bg-opacity-50">✍</button>
+                                            </a>
+                                            <form onsubmit="return confirm('yaqin mau di hapus')"
+                                                action="/delete/{{ $todo->id }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn bg-danger bg-opacity-50" type="submit">🗑</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

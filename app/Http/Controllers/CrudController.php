@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CrudController extends Controller
 {
-    public function index()
+public function index()
     {
         return view('home', [
             'todos' => Todo::all()
@@ -28,12 +28,51 @@ public function store(Request $request)
             'deskripsi' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-        $imageName = time().'.'.$request->foto->extension();
-        $request->foto->move(public_path('images'), $imageName);
-        $data['foto'] = $imageName;
+
+        if($request->foto){
+            $imageName = time().'.'.$request->foto->extension();
+            $request->foto->move(public_path('images'), $imageName);
+            $data['foto'] = $imageName;
+        }
         Todo::create($data);
 
-        return redirect('/');
+        return redirect()->route('home');
+
 
     }
+
+public function edit(Todo $todo)
+    {
+        return view('edit', [
+            'todo' => $todo
+        ]);
+    }
+
+    public function update(Request $request, Todo $todo)
+    {
+        $data = $request->validate([
+            'judul' => 'required',
+            'pengarang' => 'required',
+            'penerbit' => 'required',
+            'deskripsi' => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        if($request->hasFile('foto')){
+            $imageName = time().'.'.$request->foto->extension();
+            $request->foto->move(public_path('images'), $imageName);
+            $data['foto'] = $imageName;
+        }
+
+        $todo->update($data);
+
+        return redirect()->route('home');
+    }
+
+public function destroy(Todo $todo)
+    {
+        $todo->delete();
+        return redirect()->route('home');
+    }
+
 }
